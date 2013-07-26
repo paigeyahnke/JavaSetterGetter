@@ -54,12 +54,12 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
 
         getterTemplate = """
 {3}public {1} get{0}() {{
-{3}    return this.{2};
+{3}\treturn this.{2};
 {3}}}"""
 
         setterTemplate = """
 {3}public void set{0}({1} {2}) {{
-{3}    this.{2} = {2};
+{3}\tthis.{2} = {2};
 {3}}}"""
 
         for prop in selection_matches:
