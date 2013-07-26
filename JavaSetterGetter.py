@@ -35,7 +35,7 @@ def getSelections(view):
     for line in selected:
         md = matchdict(line)
         if DEBUG:
-            print line, md
+            print(line, md)
         if md.get("access", None) is not None: # Make sure it's private or protected
             if md.get("static", None) is None: # Make sure it's not static
                 selection_matches.append(md)
@@ -80,8 +80,8 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
             insert_count = self.view.insert(edit, insert_position, properties_text)
             self.view.sel().clear()
             self.view.sel().add(sublime.Region(insert_position, (insert_position + insert_count)))
-        except Exception, ex:
+        except Exception as ex:
             if DEBUG:
-                print ex
+                print(ex)
         finally:
             self.view.end_edit(edit)
