@@ -15,3 +15,11 @@ How to make it work:
 - Your getters and setters should be ready to go.
 
 Note for Mac users: On OSX your default key combination is Command+K then Command+J.
+
+## Sublime Text 3
+
+To install for Sublime Text 3, clone the st3 branch into your Packages/ directory using the following command.
+
+```
+git clone -b st3 https://github.com/enriquein/JavaSetterGetter.git "JavaSetterGetter"
+```
