@@ -75,7 +75,6 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
             return
 
         try:
-            edit = self.view.begin_edit('java_setter_getter')
             properties_text = "\n" + "\n".join(getter_arr) + "\n" + "\n".join(setter_arr)
             insert_count = self.view.insert(edit, insert_position, properties_text)
             self.view.sel().clear()
@@ -83,5 +82,3 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
         except Exception as ex:
             if DEBUG:
                 print(ex)
-        finally:
-            self.view.end_edit(edit)
