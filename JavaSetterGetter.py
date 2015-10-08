@@ -53,11 +53,17 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
         setter_arr = []
 
         getterTemplate = """
+{3}/**
+{3} * @return DESCRIBE THE RETURN VALUE
+{3} */
 {3}public {1} get{0}() {{
 {3}\treturn {2};
 {3}}}"""
 
         setterTemplate = """
+{3}/**
+{3} * @param {2} DESCRIBE THE PARAMETER
+{3} */
 {3}public void set{0}({1} _{2}) {{
 {3}\t{2} = _{2};
 {3}}}"""
