@@ -21,5 +21,5 @@ Note for Mac users: On OSX your default key combination is Command+K then Comman
 To install for Sublime Text 3, clone the st3 branch into your Packages/ directory using the following command.
 
 ```
-git clone -b st3 https://github.com/pyotr6/JavaSetterGetter.git "JavaSetterGetter"
+git clone -b st3 https://github.com/zinaschroeder/JavaSetterGetter.git "JavaSetterGetter"
 ```
