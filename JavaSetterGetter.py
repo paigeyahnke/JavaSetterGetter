@@ -54,7 +54,7 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
 
         getterTemplate = """
 {3}/**
-{3} * @return DESCRIBE THE RETURN VALUE
+{3} * @return the value of {2}.
 {3} */
 {3}public {1} get{0}() {{
 {3}\treturn {2};
@@ -62,7 +62,9 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
 
         setterTemplate = """
 {3}/**
-{3} * @param {2} DESCRIBE THE PARAMETER
+{3} * Sets the value of {2}.
+{3} * 
+{3} * @param {2} \tthe value to assign to {2}
 {3} */
 {3}public void set{0}({1} _{2}) {{
 {3}\t{2} = _{2};
