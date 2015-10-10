@@ -35,7 +35,7 @@ def getSelections(view):
     for line in selected:
         md = matchdict(line)
         if DEBUG:
-            print line, md
+            print(line, md)
         if md.get("access", None) is not None: # Make sure it's private or protected
             if md.get("static", None) is None: # Make sure it's not static
                 selection_matches.append(md)
@@ -53,13 +53,21 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
         setter_arr = []
 
         getterTemplate = """
+{3}/**
+{3} * Gets the value of {2}
+{3} * @return the value of {2}.
+{3} */
 {3}public {1} get{0}() {{
-{3}    return this.{2};
+{3}\treturn {2};
 {3}}}"""
 
         setterTemplate = """
-{3}public void set{0}({1} {2}) {{
-{3}    this.{2} = {2};
+{3}/**
+{3} * Sets the value of {2}.
+{3} * @param {2} \tthe value to assign to {2}
+{3} */
+{3}public void set{0}({1} _{2}) {{
+{3}\t{2} = _{2};
 {3}}}"""
 
         for prop in selection_matches:
@@ -75,13 +83,10 @@ class JavaSetterGetterCommand(sublime_plugin.TextCommand):
             return
 
         try:
-            edit = self.view.begin_edit('java_setter_getter')
             properties_text = "\n" + "\n".join(getter_arr) + "\n" + "\n".join(setter_arr)
             insert_count = self.view.insert(edit, insert_position, properties_text)
             self.view.sel().clear()
             self.view.sel().add(sublime.Region(insert_position, (insert_position + insert_count)))
-        except Exception, ex:
+        except Exception as ex:
             if DEBUG:
-                print ex
-        finally:
-            self.view.end_edit(edit)
+                print(ex)
